@@ -75,7 +75,13 @@ export default function Home() {
                 (canvas) => {
                   document.body.appendChild(canvas);
                   canvas.style.display = "none";
-                  downloadRef.current.href = canvas.toDataURL("image/png");
+                  const a = document.createElement("a");
+                  a.href = canvas.toDataURL("image/png");
+                  a.download =
+                    "agd-ramazan-" + moment().format("DD-MMMM-YYYY") + ".png";
+                  document.body.appendChild(a);
+                  a.click();
+                  document.body.removeChild(a);
                 }
               );
             }}
@@ -142,19 +148,16 @@ export default function Home() {
               </div>
               <div className="bottom flex-center">
                 <img src="/assets/images/agd-logo.png" alt="" />
-              </div>
+              </div>{" "}
             </div>
-            <a
+
+            <button
               className="downloadButton"
-              download="ins.png"
-              id="dl"
-              ref={downloadRef}
-              onClick={(e) => {}}
+              onClick={(e) => e.stopPropagation()}
+              type="submit"
             >
-              <button onClick={(e) => e.stopPropagation()} type="submit">
-                Indir
-              </button>
-            </a>
+              Indir
+            </button>
           </form>
         </main>
       )}

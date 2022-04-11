@@ -249,9 +249,8 @@ form {
   filter: brightness(1.3);
 }
 
-.downloadButton button {
+.downloadButton {
   color: white;
-  background-color: transparent;
   border: none;
   outline: none;
   font-size: 32px;
